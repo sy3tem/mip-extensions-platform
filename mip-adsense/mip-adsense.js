@@ -14,6 +14,7 @@ define(function (require) {
         var insTag = document.createElement('ins');
         var width = ele.getAttribute('ad-width');
         var height = ele.getAttribute('ad-height');
+        var layout = ele.getAttribute("ad-layout-key"),
         var scriptTag1 = document.createElement('script');
         scriptTag1.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
             scriptTag1.setAttribute('async', 'true');
@@ -32,6 +33,9 @@ define(function (require) {
             else {
                 insTag.setAttribute('style', 'display:inline-block;width:' + width + 'px;height:'
                     + height + 'px');
+            }
+            if (layout) {
+                insTag.setAttribute('ad-layout-key', layout);
             }
             insTag.classList.add('adsbygoogle');
             insTag.setAttribute('data-ad-client', adClient);
